@@ -1,0 +1,35 @@
+h2{
+    text-align: center;
+}
+
+td{
+    padding: 20px 20px 20px 20px;
+}
+
+div.operation{
+    text-align: center;
+}
+
+div.move{
+    text-align: center;
+}
+
+div.return{
+    padding: 30px 30px 30px 30px;
+    display: inline-block;
+}
+
+div.submit{
+    padding: 30px 30px 30px 30px;
+    display: inline-block;
+}
+
+div.changelistbef{
+    padding: 30px 30px 30px 30px;
+    display: inline-block;
+}
+
+div.changelistaft{
+    padding: 30px 30px 30px 30px;
+    display: inline-block;
+}
