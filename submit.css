@@ -1,4 +1,4 @@
-h4{
+h2{
     text-align: center;
 }
 
@@ -6,8 +6,24 @@ div.input_list{
     margin: auto;
 }
 
+form{
+    text-align: center;
+}
+
 textarea{
-    font-size: 25px;
-    width: 500px;
-    height: 300px;
+    font-size: 2vw;
+    width: 40vw;
+    height: 40vh;
+}
+
+body{
+    background-color: skyblue;
+}
+
+div.subcan{
+    text-align: center;
+}
+
+button{
+    margin: 30px;
 }

@@ -9,22 +9,20 @@ window.onload = function onload() {
     month = Number(param["date"].slice(4, 6));
     date = Number(param["date"].slice(6, 8));
     this.PrintList();
+    this.Setbackcolor();
 }
 
 function GetQueryString() {
     if (1 < document.location.search.length) {
-        // 最初の1文字 (?記号) を除いた文字列を取得する
         var query = document.location.search.substring(1);
 
         var result = new Object();
 
-        // パラメータ名とパラメータ値に分割する
         var element = query.split('=');
 
         var paramName = decodeURIComponent(element[0]);
         var paramValue = decodeURIComponent(element[1]);
 
-        // パラメータ名をキーとして連想配列に追加する
         result[paramName] = decodeURIComponent(paramValue);
 
         return result;
@@ -67,7 +65,7 @@ function PrintList() {
 
     if (isenptylist == 1)
     {
-        list_html += '<div class="message"><tr>この日の予定はありません</tr></div>';
+        list_html += '<tr><td>この日の予定はありません</td></tr>';
     }
     else
     {
@@ -84,7 +82,6 @@ function PrintList() {
                 console.log(listcount);
                 listcount++;
             }
-
         }
     }
 
@@ -127,13 +124,33 @@ function changelist(mvmonth){
     window.location.href = "list.html" + "?date=" + year + is_1digit(month) + is_1digit(date);
 }
 
+function Setbackcolor() {
+    const colorstr = ["224, 128, 128",
+        "240, 128, 192",
+        "224, 192, 224",
+        "160, 192, 224",
+        "128, 128, 192",
+        "160, 224, 224",
+        "128, 192, 160",
+        "192, 160,  32",
+        "240, 224,  32",
+        "160,  64,  32",
+        "224, 192, 128",
+        "224, 240, 240"];
+
+    document.body.style.backgroundColor = "rgba(" + colorstr[month - 1] + ", 0.3)";
+}
+
 function move_calender() {
     window.location.href = "calender.html";
 }
 
 function list_delete(listnumber) {
-    localStorage.removeItem(year + is_1digit(month) + is_1digit(date) + is_1digit(listnumber));
-    window.location.href = "list.html" + "?date=" + year + is_1digit(month) + is_1digit(date);
+    if(window.confirm("この予定を削除しますか?"))
+    {
+        localStorage.removeItem(year + is_1digit(month) + is_1digit(date) + is_1digit(listnumber));
+        window.location.href = "list.html" + "?date=" + year + is_1digit(month) + is_1digit(date);
+    }
 }
 
 function list_submit() {

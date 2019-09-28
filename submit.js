@@ -11,21 +11,18 @@ window.onload = function () {
 
 function GetQueryString() {
     if (1 < document.location.search.length) {
-        // 最初の1文字 (?記号) を除いた文字列を取得する
         var query = document.location.search.substring(1);
 
-        // クエリの区切り記号 (&) で文字列を配列に分割する
         var parameters = query.split('&');
 
         var result = new Object();
         for (var i = 0; i < parameters.length; i++) {
-            // パラメータ名とパラメータ値に分割する
+
             var element = parameters[i].split('=');
 
             var paramName = decodeURIComponent(element[0]);
             var paramValue = decodeURIComponent(element[1]);
 
-            // パラメータ名をキーとして連想配列に追加する
             result[paramName] = decodeURIComponent(paramValue);
 
         }
@@ -37,11 +34,11 @@ function GetQueryString() {
 function submit_list() {
     var submit_html = '';
 
-    submit_html += '<h4>予定を入力してください</h4>';
+    submit_html += '<h2>予定を入力してください</h2>';
 
     submit_html += '<div class="input_list"><form name="input_list"><textarea name="listsubmit", required="true", maxlength="100"></textarea></form></div>';
 
-    submit_html += '<p><button onclick="check_submit()">登録</button><button onclick="check_cancel()">キャンセル</button></p>'
+    submit_html += '<p><div class="subcan"><button onclick="check_submit()">登録</button><button onclick="check_cancel()">キャンセル</button></div></p>'
 
     document.querySelector('#listsubmit').innerHTML = submit_html;
 }
@@ -54,7 +51,7 @@ function check_submit() {
 }
 
 function check_cancel() {
-    
+    window.location.href = "list.html" + "?date=" + submitlistday;
 }
 
 function is_1digit(count) {
